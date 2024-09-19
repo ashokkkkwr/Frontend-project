@@ -160,7 +160,6 @@ export default function Home() {
           ))}
         </div>
       </div>
-
       {/* Chat Section */}
       <div className='w-3/4 flex flex-col justify-between bg-gray-50'>
         {/* Chat Box */}
