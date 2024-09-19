@@ -1,0 +1,52 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Import Tailwind CSS styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Apply default font settings using Poppins */
+@layer base {
+  body {
+    @apply font-sans;
+    background-color: #d1d5db; /* Default light theme (Tailwind bg-gray-300) */
+  }
+
+  /* Dark theme background */
+  .dark body {
+    background-color: #111827; /* Tailwind's bg-gray-900 for dark theme */
+  }
+}
+
+/* Define the font family variables with Poppins */
+:root {
+  --font-sans: 'Poppins', sans-serif;
+}
+
+/* Global styles */
+@layer utilities {
+  input:-webkit-autofill {
+    @apply bg-white shadow-none border-b-2;
+  }
+
+  input:-webkit-autofill:hover {
+    @apply bg-white shadow-none border-b-2;
+  }
+
+  input:-webkit-autofill:focus {
+    @apply bg-white shadow-none border-b-4;
+  }
+
+  input:-webkit-autofill:active {
+    @apply bg-white shadow-none border-b-4;
+  }
+
+  input:-webkit-autofill::first-line {
+    @apply text-inherit;
+  }
+}
+
+* {
+  scroll-behavior: smooth;
+}

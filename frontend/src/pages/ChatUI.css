@@ -1,0 +1,19 @@
+.chat-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .chat-bubble {
+    margin-bottom: 10px;
+  }
+  
+  .chat-message {
+    word-break: break-word;
+  }
+  
+  .chat-media img {
+    max-width: 100%;
+    border-radius: 5px;
+  }
+  
