@@ -1,0 +1,59 @@
+// schema.prisma
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id               Int          @id @default(autoincrement())
+  username         String       @unique
+  email            String       @unique
+  password         String
+  createdAt        DateTime     @default(now())
+  userDetails      UserDetails?
+  courses          Courses[]
+  sentMessages     Message[]    @relation("SentMessages")
+  receivedMessages Message[]    @relation("ReceivedMessages")
+}
+
+model UserDetails {
+  id      Int    @id @default(autoincrement())
+  bio     String
+  address String
+  phone   String
+  userId  Int    @unique
+  user    User   @relation(fields: [userId], references: [id])
+}
+
+model Courses {
+  id     Int    @id @default(autoincrement())
+  course String
+  userId Int
+  user   User   @relation(fields: [userId], references: [id])
+}
+
+model Message {
+  id         Int      @id @default(autoincrement())
+  content    String
+  createdAt  DateTime @default(now())
+  senderId   Int
+  receiverId Int
+  medias     MessageMedia[]
+  sender     User     @relation("SentMessages", fields: [senderId], references: [id])
+  receiver   User     @relation("ReceivedMessages", fields: [receiverId], references: [id])
+}
+model MessageMedia {
+  id        String    @id @default(cuid())
+  name      String
+  filePath  String    
+  messageId Int
+  mimeType String  
+  message   Message   @relation(fields: [messageId], references: [id])
+
+}
+
